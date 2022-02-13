@@ -19,9 +19,10 @@ if ($_SESSION['login']) {
   <html>
 
   <head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type='text/javascript'>
       $(document).ready(function() {
         $('.dateFilter').datepicker({
@@ -29,7 +30,18 @@ if ($_SESSION['login']) {
         });
       });
     </script>
+    <style>
+      body {
+				background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEzNzYzNn0?utm_source=dictionnaire&utm_medium=referral");
+				background-repeat: no-repeat;
+				background-size: cover;
+				font-family: 'Open Sans', sans-serif;
+				align-items: center;
+				justify-content: center;
+        margin-left: 25%;
 
+			}
+    </style>
 
     <?php
     print "<title>Photos de $personne</title>";
@@ -37,30 +49,31 @@ if ($_SESSION['login']) {
   </head>
 
   <body>
-
+    <br><br>
     <form method='post' action=''>
-      Start Date <input type="text" class="dateFilter" name="fromDate" value="<?php if (isset($_POST['fromDate'])) echo $_POST['fromDate']; ?>">
+      <b>Start Date</b> <input style="width:200px; border-radius:3px;" type="date" class="dateFilter" name="fromDate" value="<?php if (isset($_POST['fromDate'])) echo $_POST['fromDate']; ?>">
 
-      End Date <input type="text" class="dateFilter" name="endDate" value="<?php if (isset($_POST['endDate'])) echo $_POST['endDate']; ?>">
+      <b>End Date</b> <input style="width:200px; border-radius:3px;" type="date" class="dateFilter" name="endDate" value="<?php if (isset($_POST['endDate'])) echo $_POST['endDate']; ?>">
 
-      <input type="submit" name="but_search" value="Search">
+      <input type="submit" name="but_search" value="Search" class="btn btn-success">
     </form>
     <!--<input type ="text" name = "from_date"  id = "from_date">
 <input type ="text" name = "to_date"  id = "to_date">
 <input type ="button" name = "filter"  id = "filter" value = "Filtrer">-->
 
-
     <?php
-    print "<h2>Photos de $personne</h2>\n";
+    print "<h2>Photos de $personne</h2><br>\n";
     ?>
 
 
     <!-- Employees List -->
     <div>
 
-      <table>
+      <table border="1">
         <tr>
           <th>Description</th>
+          <th>Photo</th>
+
 
 
           <th>Publish Date</th>
@@ -103,7 +116,7 @@ if ($_SESSION['login']) {
 
             echo "<tr>";
             echo "<td><a href=\"photo.php?id=$id_photo\">$description_courte</a></td>";
-            //echo "<td><a href=\"photo.php?id=$id_photo\"><img src=\"$fichier\"></a></td>";
+            echo "<td><a href=\"photo.php?id=$id_photo\"><img src=\"$fichier\" width=\"150px\" heigth=\"150px\"></a></td>";
             echo "<td>" . $date . "</td>";
 
 
@@ -111,12 +124,11 @@ if ($_SESSION['login']) {
           }
         } else {
           echo "<tr>";
-          echo "<td colspan='2'>No record found.</td>";
+          echo "<td colspan='3'>No record found.</td>";
           echo "</tr>";
         }
         ?>
       </table>
-
     </div>
 
 
@@ -149,9 +161,8 @@ while ($nuplet = $resultat->fetch(PDO::FETCH_ASSOC)) {
 print "</ol>\n";
 ?>-->
   <?php
-	  print '<p><a href="acceuille.php">Retour a l\'accueil</a></p>' . "\n"
+	  print '<br><p><a href="acceuille.php" class="btn btn-dark">Retour a l\'accueil</a></p>' . "\n"
 	?>
-
   </body>
 
   </html>

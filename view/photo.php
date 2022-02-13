@@ -37,7 +37,25 @@ if (isset($_POST['but']) && $_POST['but'] == 'ajout_commentaire') {
 
 ?>
 <html>
-<head><title>Photo</title></head>
+<head>
+	<title>Photo</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<style>
+      body {
+				background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEzNzYzNn0?utm_source=dictionnaire&utm_medium=referral");
+				background-repeat: no-repeat;
+				background-size: cover;
+				font-family: 'Open Sans', sans-serif;
+				align-items: center;
+				justify-content: center;
+        		margin-left: 35%;
+
+			}
+    </style>
+</head>
 <body>
 <?php
 	if ($id_photo == null) {
@@ -54,13 +72,18 @@ if (isset($_POST['but']) && $_POST['but'] == 'ajout_commentaire') {
 		  $desc = $nuplet['description'];
 
 		  print "<div>\n";
-		  print "<p align='center'><img src='$fi'  width=\"300\" height=\"300\"></p>\n";
+		  print "<br><br><p style='margin-left:80px;'><img src='$fi'  width=\"300\" height=\"300\"></p>\n";
 		  $date = strtotime($da);
 		  $date_affichee = date('d/m/Y',$date);
-		  print "<p>Photo de <a href=\"photos_personne.php?personne=$personne_param\">$proprietaire</a> prise le  $date_affichee</p>\n";
+		  print "<p><b>Photo de <a href=\"photos_personne.php?personne=$personne_param\">$proprietaire</a> prise le  $date_affichee</b></p>\n";
 		  
 		  print "<p>$desc</p>\n";
-		  print "</div>\n";	
+		  print "</div>\n";
+		  print "<hr width='500px' style='margin-left:-1px'>";
+
+		  print "<p><b>Les commentaires</b></p>\n";
+
+		  
 		  
 	  /*	affiche_photo(
 	  			$proprietaire,
@@ -98,7 +121,7 @@ if (isset($_POST['but']) && $_POST['but'] == 'ajout_commentaire') {
 
 		
 		
-		print "<a href=\"delete.php?deleteid=$deleteid\">Delete </a>";
+		print "<a href=\"delete.php?deleteid=$deleteid\" >Delete </a>";
 	}
 }
 	
@@ -112,11 +135,11 @@ if (isset($_POST['but']) && $_POST['but'] == 'ajout_commentaire') {
 	  	
 	  	print "<div>";
 	  	print "<form action='photo.php?id=$id_photo' method='POST'>\n";
-	  	print "<h3>Ajouter un commentaire</h3>";
-	  	print "<p><textarea name='contenu' rows='10' cols='60'></textarea></p>\n";
+	  	print "<h3><b>Ajouter un commentaire</b></h3>";
+	  	print "<p><textarea name='contenu' rows='10' cols='60' placeholder='entrer votre commentaire'></textarea></p>\n";
 	  	print "<input type='hidden' name='but' value='ajout_commentaire'>";
 	  	print "<input type='hidden' name='id' value='$id_photo'>";
-	  	print "<p><input type='submit' value='Ajouter'><input type='reset' value='Vider'></p>\n";
+	  	print "<p><input type='submit' value='Ajouter' class='btn btn-success'><input type='reset' value='Vider' class='btn btn-danger'></p>\n";
 	  	print "</form>";
 	  	print "</div>\n";
 	  } else {
@@ -124,14 +147,14 @@ if (isset($_POST['but']) && $_POST['but'] == 'ajout_commentaire') {
 	  }
 	} 
 ?>
-<hr>
+<br>
 <?php
 if ($proprietaire == $login) {
-	print "<p><a href='modifie_photo.php?id=$id_photo'>Modifier les informations sur cette photo</a>.</p>";
+	print "<p class='btn btn-warning'><a href='modifie_photo.php?id=$id_photo'>Modifier les informations sur cette photo</a>.</p>";
 }
 ?>
 <?php
-		print '<p><a href="photos_personne.php?personne=' . $personne_param . '">Retour au profil</a></p>' . "\n"
+		print '<p><a href="photos_personne.php?personne=' . $personne_param . '" class="btn btn-dark">Retour au profil</a></p>' . "\n"
 ?>
 
 </body>

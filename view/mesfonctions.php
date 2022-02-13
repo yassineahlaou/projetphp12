@@ -1,7 +1,7 @@
 <?php
 function affiche_photo($proprietaire,$date_photo,$description,$fichier) {
 	print "<div>\n";
-	print "<p align='center'><img src='$fichier'></p>\n";
+	print "<p style='margin-left:-1px;'><img src='$fichier'></p>\n";
 	$date = strtotime($date_photo);
 	$date_affichee = date('d/m/Y',$date);
 	print "<p>Photo de $proprietaire prise le $date_affichee.</p>\n";

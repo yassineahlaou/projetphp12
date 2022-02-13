@@ -14,8 +14,7 @@
             }
             else
             {
-                echo "Password changed succefully";
-                header("Refresh: 2; url=../view/login.php");
+                header("Refresh: 1; url=../index.php");
             }
         }
         else
