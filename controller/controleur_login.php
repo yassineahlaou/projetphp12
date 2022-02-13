@@ -10,6 +10,7 @@
 
     $user_model=new Utilisateur;
     $user = $user_model->login($_POST["login"], $_POST["password"]);
+    $_SESSION["login"] = $_POST["login"];
     if($user == false)
     {
         echo "Invalid account";
@@ -17,7 +18,7 @@
     else
     {
         if($user_model->is_verified($_POST["login"]) == "1"){
-            header("Refresh: 2; url=../view/index.php");
+            header("Location: ../view/acceuille.php");
         }
         else
         {

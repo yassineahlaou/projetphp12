@@ -13,7 +13,7 @@ include("../model/utilisateur.php");
             }
             else
             {
-                header("Location: ../view/index.php");
+                header("Location: ../view/acceuille.php");
             }
         }
         else

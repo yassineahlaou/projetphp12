@@ -2,9 +2,9 @@
 class Database
 {
     private $host = 'us-cdbr-east-05.cleardb.net';
-    private $user = 'bfaed53520ddaf';
-    private $pass = 'a3791c2e';
-    private $dbname = 'heroku_f040b1c369568c5';
+    private $user = 'b5bfe17e610dd7';
+    private $pass = '59e13751';
+    private $dbname = 'heroku_b6a721b0cdd0fd1';
     private $dbh;
     private $stmt;
     private $error;
@@ -70,5 +70,9 @@ class Database
     public function rowCount()
     {
         return $this->stmt->rowCount();
+    }
+    
+    public function connexion(){
+        return $this->dbh;
     }
 }

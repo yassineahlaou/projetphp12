@@ -53,7 +53,7 @@
             <button id="button">Check informations</button>
             <button type="submit">Submit</button>
             <br>
-            <a href="login.php">Return to login page</a>
+            <a href="../index.php">Return to login page</a>
 
         </form>
     </div>

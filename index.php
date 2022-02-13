@@ -12,7 +12,7 @@
             <h2>Connexion to the website:</h2>
         </div>
 
-        <form action='../controller/controleur_login.php' method='POST' class='form'>
+        <form action='controller/controleur_login.php' method='POST' class='form'>
             <div class="form-control">
                 <label for="username">Username:</label>
                 <input type="text" placeholder="enter your username" id="username" name="login" size="32" maxlength="128" required />
@@ -33,8 +33,8 @@
             <button type="reset">Clear</button>
             <br>
 
-            &emsp;<a href="inscription.php">Sign up</a>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
-            <a href="forgotten_password.php">Forgotten password</a>
+            &emsp;<a href="view/inscription.php">Sign up</a>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+            <a href="view/forgotten_password.php">Forgotten password</a>
         </form>
     </div>
 </body>

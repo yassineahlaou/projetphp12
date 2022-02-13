@@ -10,7 +10,7 @@ if($user_model->find_user_by_email($_POST["username"], $_POST["email"]))
         }
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         if($user_model->inscription($_POST["fullname"], $_POST["email"], $_POST["username"], $password)){
-            header("Refresh: 2; url=../view/login.php");
+            header("Refresh: 2; url=../index.php");
         }
         else
         {
