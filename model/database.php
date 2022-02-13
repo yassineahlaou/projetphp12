@@ -1,10 +1,10 @@
 <?php
 class Database
 {
-    private $host = 'localhost';
-    private $user = 'root';
-    private $pass = '';
-    private $dbname = 'mini_fb';
+    private $host = 'us-cdbr-east-05.cleardb.net';
+    private $user = 'b1fd022b6b6fcc';
+    private $pass = '323fdd18';
+    private $dbname = 'heroku_a693148aebf752f';
     private $dbh;
     private $stmt;
     private $error;
