@@ -49,9 +49,9 @@ if (isset($_GET['id'])) {
 	 		print "<form action='photo.php' method='POST' name='maj'>\n";
 			 print "<p><b>Description</b></p>";
 	 		print "<p><textarea name='description' rows='10' cols='60'>$description</textarea></p>\n";
-	 		print "<p><b>Date de la photo: </b>";
-	 		input_date('date_photo','maj',$date);
-	 		print "</p>\n";
+	 		print "<p><b>Date de la photo: </b> <input type=\"date\"  name = \"date_photo\"></p>\n";
+	 		
+	 		
 			
 	 		print "<input type='hidden' name='id' value='$id_photo'>";
 	 		print "<input type='hidden' name='but' value='maj'>";

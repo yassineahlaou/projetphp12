@@ -137,17 +137,7 @@ function sauve_photo($param_fichier) {
 }
 
 
-function input_date($nomChamp,$nomForm,$valeur='') 
-{
-  echo "<input type=\"Text\" name=\"$nomChamp\" value=\"$valeur\" size=\"20\">";
-  echo "<a href=\"javascript:cal$nomChamp.popup();\"></a>\n";
-  echo "<script language=\"JavaScript\">\n";
-  echo "var cal$nomChamp = new calendar1(document.forms['$nomForm'].elements['$nomChamp']);\n";
-  echo "cal$nomChamp.year_scroll = true;\n";
-  echo "cal$nomChamp.time_comp = false;\n";
-  echo "</script>\n";
-  return 0;
-}
+
 	
 function verifie_date($date) {
 	$timestamp = strtotime($date);

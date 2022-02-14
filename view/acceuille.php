@@ -119,7 +119,7 @@ if ($_SESSION['login']) {
 				<p>Fichier de la photo: <input type="file" name="photo" size=30 class="btn btn-light"></p>
 				<p>Description de la photo:</p>
 				<p><textarea name="description" rows="10" cols="50" placeholder="entrer la description de votre photo"></textarea></p>
-				<p>Date de la photo: <? input_date('date_photo', 'add_photo'); ?></p>
+				<p>Date de la photo: <input type="date"  name = "date_photo"></p>
 
 				<p>
 					<input type="submit" class="btn btn-success" value="Ajouter la photo">
