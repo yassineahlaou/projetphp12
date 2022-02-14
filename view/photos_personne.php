@@ -19,10 +19,10 @@ if ($_SESSION['login']) {
   <html>
 
   <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type='text/javascript'>
       $(document).ready(function() {
         $('.dateFilter').datepicker({
@@ -32,36 +32,48 @@ if ($_SESSION['login']) {
     </script>
     <style>
       body {
-        background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEzNzYzNn0?utm_source=dictionnaire&utm_medium=referral");
-        background-repeat: no-repeat;
-        background-size: cover;
-        font-family: 'Open Sans', sans-serif;
-        align-items: center;
-        justify-content: center;
+				background-image: url("https://wallpapercave.com/wp/wp3589868.jpg");
+				background-repeat: no-repeat;
+				background-size: cover;
+				font-family: 'Open Sans', sans-serif;
+				align-items: center;
+				justify-content: center;
         margin-left: 25%;
 
-      }
+			}
+
+.imggallery{
+
+width: 75%;
+
+
+
+
+}
 
       div.gallery {
-        margin: 5px;
-        border: 1px solid #ccc;
-        float: left;
-        width: 180px;
-      }
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 220px;
+  height: 300px;
 
-      div.gallery:hover {
-        border: 1px solid #777;
-      }
+}
 
-      div.gallery img {
-        width: 100%;
-        height: auto;
-      }
 
-      div.desc {
-        padding: 15px;
-        text-align: center;
-      }
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: 200px;
+}
+
+div.desc {
+  padding: 1px;
+  text-align: center;
+}
     </style>
 
     <?php
@@ -78,9 +90,9 @@ if ($_SESSION['login']) {
 
       <input type="submit" name="but_search" value="Search" class="btn btn-success">
     </form>
-    <?php
+     <?php
     print '<br><p><a href="acceuille.php" class="btn btn-dark">Retour a l\'accueil</a></p>' . "\n"
-    ?>
+  ?>
     <!--<input type ="text" name = "from_date"  id = "from_date">
 <input type ="text" name = "to_date"  id = "to_date">
 <input type ="button" name = "filter"  id = "filter" value = "Filtrer">-->
@@ -91,61 +103,65 @@ if ($_SESSION['login']) {
 
 
     <!-- Employees List -->
-    <div>
+    <div class="imggallery">
 
+      
 
+        <?php
+        $emp_query = "SELECT * FROM photo WHERE proprietaire = '$personne'";
 
-      <?php
-      $emp_query = "SELECT * FROM photo WHERE proprietaire = '$personne'";
+        // Date filter
+        if (isset($_POST['but_search'])) {
+          $fromDate = $_POST['fromDate'];
+          $endDate = $_POST['endDate'];
 
-      // Date filter
-      if (isset($_POST['but_search'])) {
-        $fromDate = $_POST['fromDate'];
-        $endDate = $_POST['endDate'];
-
-        if (!empty($fromDate) && !empty($endDate)) {
-          $emp_query .= " AND date_photo 
+          if (!empty($fromDate) && !empty($endDate)) {
+            $emp_query .= " AND date_photo 
                           BETWEEN '" . $fromDate . "' and '" . $endDate . "' ";
-        }
-      }
-
-      // Sort
-      $emp_query .= " ORDER BY date_photo  DESC";
-      //$employeesRecords = mysqli_query($connect,$emp_query);
-      $resultat = $connect->prepare($emp_query);
-      $resultat->execute();
-      $row_count = $resultat->rowCount();
-
-
-      // Check records found or not
-      if ($row_count > 0) {
-        while ($empRecord = $resultat->fetch(PDO::FETCH_ASSOC)) {
-          $id_photo = $empRecord['id'];
-          $date = $empRecord['date_photo'];
-          $fichier = $empRecord['fichier'];
-          $personne_param = rawurlencode($personne);
-          $description_courte = substr(stripslashes($empRecord['description']), 0, 30);
-          if (strlen($empRecord['description']) > 30) {
-            $description_courte = $description_courte . '...';
           }
-
-
-
-          echo "<div class='gallery'>";
-
-          echo "<a href=\"photo.php?id=$id_photo\"><img src=\"$fichier\" width=\"150px\" heigth=\"150px\"></a>";
-
-          echo "<div class='desc'><a href=\"photo.php?id=$id_photo\">$description_courte</a></div><div class='desc'>$date </div></div>";
         }
-      } else {
-        echo "<table>";
-        echo "<tr>";
-        echo "<td colspan='3'>No record found.</td>";
-        echo "</tr>";
-        echo "<table>";
-      }
-      ?>
 
+        // Sort
+        $emp_query .= " ORDER BY date_photo  DESC";
+        //$employeesRecords = mysqli_query($connect,$emp_query);
+        $resultat = $connect->prepare($emp_query);
+        $resultat->execute();
+        $row_count = $resultat->rowCount();
+
+
+        // Check records found or not
+        if ($row_count > 0) {
+          while ($empRecord = $resultat->fetch(PDO::FETCH_ASSOC)) {
+            $id_photo = $empRecord['id'];
+            $date = $empRecord['date_photo'];
+            $fichier = $empRecord['fichier'];
+            $personne_param = rawurlencode($personne);
+            $description_courte = substr(stripslashes($empRecord['description']), 0, 30);
+            if (strlen($empRecord['description']) > 30) {
+              $description_courte = $description_courte . '...';
+            }
+
+
+
+            echo "<div class='gallery'>";
+ 
+    echo "<a href=\"photo.php?id=$id_photo\"><img src=\"$fichier\"  width='200' height='200'></a>";
+  
+echo"<div class='desc'><a href=\"photo.php?id=$id_photo\">$description_courte</a></div><div class='desc'>$date </div></div>";
+
+
+
+
+          }
+        } else {
+          echo"<table>";
+          echo "<tr>";
+          echo "<td colspan='3'>No record found.</td>";
+          echo "</tr>";
+          echo"<table>";
+        }
+        ?>
+      
     </div>
     <br>
 
@@ -178,7 +194,7 @@ while ($nuplet = $resultat->fetch(PDO::FETCH_ASSOC)) {
 
 print "</ol>\n";
 ?>-->
-
+  
   </body>
 
   </html>

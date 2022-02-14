@@ -19,7 +19,7 @@ if ($_SESSION['login']) {
 		<title>Accueil</title>
 		<style>
 			body {
-				background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEzNzYzNn0?utm_source=dictionnaire&utm_medium=referral");
+				background-image: url("https://wallpapercave.com/wp/wp3589868.jpg");
 				background-repeat: no-repeat;
 				background-size: cover;
 				font-family: 'Open Sans', sans-serif;
@@ -58,17 +58,21 @@ if ($_SESSION['login']) {
 			}
 
 			li a:hover:not(.active) {
+				
+  text-decoration: none;
+
 			background-color: #111;
 			}
 			div {
-				padding-left: 20%;
-				width: 900px;
+				padding-left: 12%;
+				width: 1000px;
 				height: 620px;
 				margin-bottom: 20px;
 			}
 
 			div #form{
-				margin-left: 20%;
+				width: 550px;
+				margin-left: 34%;
 				border: solid black 2px;
 				border-radius: 1%;
 			}
@@ -78,6 +82,9 @@ if ($_SESSION['login']) {
 			hr{
 				width: 80%;
 			}
+			a {
+  text-decoration: none;
+}
 
 		</style>
 		<script src="fonctions.js"> </script>
@@ -86,7 +93,7 @@ if ($_SESSION['login']) {
 
 	<body>
 		<?php
-		print "<center><h1><b>Bienvenue $login</b></h1></center><br>";
+		print "<center><h1><b>Bienvenue $login</b></h1></center>";
 		?>
 		<div>
 			<h3><b>Voir les photos de:</b></h3>
